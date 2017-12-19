@@ -1,0 +1,89 @@
+//whr-module for partner federation to SharePoint 
+//Deployed as dll via the solution wsp
+//References to article at the end. 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web;
+
+namespace SP.Extranet.HttpModules
+{
+    public class AddWHR : iHttpModule
+    {
+        public void Dispose()
+        {
+            //throw new NotImplementedException();
+        }
+
+        public void Init(HttpApplication context)
+        {
+            try
+            {
+                context.BeginRequest += context_BeginRequest;
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.PublishToSharepointLog(123, ex.Message, "", "Init", ex);
+            }
+        }
+
+        void context_BeginRequest(object sender, EventArgs e)
+        {
+            try
+            {
+                HttpApplication application = (HttpApplication)sender;
+                HttpContext context = application.Context;
+                Uri rqst = context.Request.Url;
+                string url = rqst.ToString().ToLower();
+
+                if (
+                    url.Contains("_trust/default.aspx")
+                    &&
+                    (!context.Request.QueryString.AllKeys.Contains("whr"))
+                    )
+                {
+                    
+                    StringBuilder sb = new StringBuilder(1024);
+                    //enumerate all query string values
+                    if (context.Request.QueryString.Keys.Count > 0)
+                    {
+                        foreach (string key in context.Request.QueryString.Keys)
+                        {
+                            sb.append(key + "=" + HttpUtility.UrlEncode(context.Request.QueryString[key]) + "&");
+                        }
+
+                        //Our static partner realm identifier here is "PI2/IP". 
+                        //INSERT YOUR BUSINESS LOGIC HERE TO SEND THE USER TO THE LOCATION THEY SHOULD GO 
+                        //Many scenariows allow to detect users organisation from the UPN @domain.com  
+
+                        sb.append("whr=" + "PI2/IP");
+
+                        //INSERT YOUR BUSINESS LOGIC HERE TO SEND THE USER TO THE LOCATION THEY SHOULD GO 
+                        //Many scenariows allow to detect users organisation from the UPN @domain.com  
+
+                        string redir = rqst.Scheme + "://" + rqst.Host + ":" +
+                            rqst.Port.ToString() + rqst.AbsolutePath;
+                        context.Response.Redirect(redir + "?" + sb.ToString());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.PublishToSharepointLog(123, ex.Message, "", "context_BeginRequest", ex);
+            }
+        }
+    }
+}
+
+//Steve Peschka 
+//Using the WHR Parameter with SP2010 and SAML Auth
+//https://samlman.wordpress.com/2015/03/01/using-the-whr-parameter-with-sharepoint-2010-and-saml-auth/
+//http://blogs.technet.com/b/speschka/archive/2011/09/14/using-the-whr-parameter-with-sharepoint-2010-and-saml-auth.aspx
+
+//
+//Chris Keyser 
+//SharePoint 2010 claims and Home Realm Discover – passing whr on the url to SharePoint
+//https://blogs.msdn.microsoft.com/chriskeyser/2011/10/02/sharepoint-2010-claims-and-home-realm-discover-passing-whr-on-the-url-to-sharepoint/
