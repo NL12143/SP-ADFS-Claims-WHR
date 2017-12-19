@@ -6,6 +6,8 @@ Fixed Home realm discovery for SharePoint users via a whr http module.
 Required for partner federation with SharePoint not using default setup to show list of partners. 
 A "show list of partners" is considered unsecure and not user friendly.  
 
+For now it adds a static WHR value. Will add  code that takes the users UPN (email) and insert the corresponding, dynamic, WHR. 
+
 ## References 
 
 Steve Peschka 
