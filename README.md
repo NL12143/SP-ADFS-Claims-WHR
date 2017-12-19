@@ -1,9 +1,10 @@
 # sp-adfs-whr 
 
-Automatic home realm discovery via whr module.  
 Automticaly direct users to their identity provider. 
-The default "show list of partners" is considered unsecure and not user friendly.  
-Required for partner federation with SharePoint
+Fixed Home realm discovery for SharePoint users via a whr http module.  
+
+Required for partner federation with SharePoint not using default setup to show list of partners. 
+A "show list of partners" is considered unsecure and not user friendly.  
 
 
 # References 
