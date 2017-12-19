@@ -25,9 +25,9 @@ namespace SP.Extranet.HttpModules
                 context.BeginRequest += context_BeginRequest;
             }
             catch (Exception ex)
-            {
-                ExceptionHandling.PublishToSharepointLog(123, ex.Message, "", "Init", ex);
-            }
+			{
+				Debug.WriteLine(ex.Message);
+			}
         }
 
         void context_BeginRequest(object sender, EventArgs e)
