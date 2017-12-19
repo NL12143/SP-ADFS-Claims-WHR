@@ -1,0 +1,11 @@
+
+
+Steve Peschka 
+Using the WHR Parameter with SP2010 and SAML Auth
+https://samlman.wordpress.com/2015/03/01/using-the-whr-parameter-with-sharepoint-2010-and-saml-auth/
+http://blogs.technet.com/b/speschka/archive/2011/09/14/using-the-whr-parameter-with-sharepoint-2010-and-saml-auth.aspx
+
+
+Chris Keyser 
+SharePoint 2010 claims and Home Realm Discover – passing whr on the url to SharePoint
+https://blogs.msdn.microsoft.com/chriskeyser/2011/10/02/sharepoint-2010-claims-and-home-realm-discover-passing-whr-on-the-url-to-sharepoint/

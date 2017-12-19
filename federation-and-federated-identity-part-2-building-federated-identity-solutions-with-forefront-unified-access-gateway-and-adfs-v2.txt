@@ -1,0 +1,17 @@
+
+https://technet.microsoft.com/en-us/video/tdbe11-federation-and-federated-identity-part-2-building-federated-identity-solutions-with-forefront-unified-access-gateway-and-adfs-v2.aspx
+
+Federation and Federated Identity: Part 2 Building Federated Identity Solutions with Forefront Unified Access Gateway and ADFS v2
+
+About This Video
+For years we have been striving towards Single-Sign-On (SSO) for our users when they access corporate resources. However, as organizations move applications to the Cloud and have requirements for their users to access applications that reside within partner organizations, secure SSO authentication and authorization presents major challenges. The solution to these challenges is Federated Identity and claims based applications. Come to this two part session and learn how to build Federated Identity solutions for the future. Part 1, introduces the challenges facing administrators and developers and show you how to implement Federation using Microsoft Active Directory Federation Services (AD FS) v2. You will learn how to build SSO solutions allowing your users to access on-premise, Cloud and partner based applications. Part 2, delves deeper and looks at enhanced options for Federation including the user of Forefront Unified Access Gateway (UAG) SP1 and ADFS v2. Both part 1 and part 2 contain extensive demos which will accelerate your understanding of Federation and what it can bring to your organisation. Although we don’t delve into code, developers will gain invaluable knowledge on claims based identity. Federated identity is the Hot Topic for 2011. Make sure you are riding the wave. 
+
+Session level: 400
+
+About the speaker
+John Craddock
+Principal Systems Consultant
+
+John Craddock has designed and implemented computing systems ranging from embedded high-speed industrial controllers through to distributed IT solutions. John works as a consultant providing services to industry leaders including Microsoft; he was a key player in the Government Gateway Project, is the infrastructure architect for a number of web portals built on Windows Sever 2003 technologies. In addition to his role as a consultant, he has written over 20 technical training courses that have been published worldwide. John lectures internationally and has written and presented sessions on Windows 2000 and 2003 Active Directory at MTB, MEC, TechEd, IT Forum, JDP and deployment conferences.
+ 
+Published Date: May 12, 2011
