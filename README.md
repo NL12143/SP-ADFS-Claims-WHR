@@ -1,9 +1,9 @@
 # sp-adfs-whr 
 
-Automticaly direct users to their identity provider. 
-Fixed Home realm discovery for SharePoint users via a whr http module.  
+Redirect users to their identity provider, using ADFS as the hub. 
+Home realm discovery for SharePoint users via a whr http module.  
 
-Required for partner federation with SharePoint not using default setup to show list of partners. 
+Required for partner federation with SharePoint not using the default setup to show list of partners. 
 A "show list of partners" is considered unsecure and not user friendly.  
 
 For now it adds a static WHR value. Will add  code that takes the users UPN (email) and insert the corresponding, dynamic, WHR. 
@@ -19,7 +19,6 @@ SharePoint 2010 claims and Home Realm Discover – passing whr on the url to Sha
 https://blogs.msdn.microsoft.com/chriskeyser/2011/10/02/sharepoint-2010-claims-and-home-realm-discover-passing-whr-on-the-url-to-sharepoint/
 
 Home Realm Discovery is a process to select the trusted identity provider in a federated claims scenario where there is more than one provider that can authenticate users.  The default experience is to have the user select which claims provider to use to authenticate.  Often organizations would like to avoid making their users perform this decision.  There are a few ways to automate this selection, one of which is through providing a hint on the url to the federation server (in the form of a whr parameter) that is then used by the federation server to pre-select the identity provider.  
-
 
 # A Guide to Claims based Identity and Access Control 
 https://msdn.microsoft.com/en-us/library/hh446526.aspx 
