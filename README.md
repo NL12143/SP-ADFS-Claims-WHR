@@ -35,7 +35,7 @@ With multiple partners having access to the a-Portal SharePoint web application,
 If Adatum shares the a-Portal web application with multiple partners, each of those partners will have its own identity provider, as shown in Figure 2 earlier in this chapter. With multiple identity providers in place, there must be some mechanism for selecting the correct identity provider for a user to use for authentication, and that's the home-realm discovery process.
 Adatum decided to customize the home-realm discovery page that ADFS provides. The default page in ADFS HomeRealmDiscovery.aspx displays a drop-down list of the claims provider trusts configured in ADFS (claims provider trusts represent identity providers in ADFS) for the user to select an identity provider. ADFS then redirects the user to the sign-in page at the identity provider. It's easy to customize this page with partner logos to make it easier for users to select the correct identity provider. In addition, this page in ADFS has access to the relying party identifier in the *&wtrealm* parameter so it can customize the list of identity providers based on the identity of the SharePoint relying party web application. After a user has selected an identity provider for the first time, ADFS can remember the choice so that in the future, the user bypasses the home-realm discovery page and redirects the browser directly to the identity provider's sign-in page.
 
-&login 
-&wctx
-&wReply
-&wrealm
+&login <Br>
+&wctx <Br>
+&wReply <Br>
+&wrealm <Br>
