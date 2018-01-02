@@ -1,16 +1,13 @@
 //whr-module for partner federation to SharePoint 
+//References to articles at the end. 
 //Deployed as dll via the solution wsp
 //C:\Windows\Microsoft.NET\assembly\GAC_MSIL\SP.SiteName\SP.SiteName.dll 
-//
-//References to articles at the end. 
-//
-//Add to web.config via feature activation  
+//Added to web.config via feature activation  
 //<system.webServer>
 //    <modules runAllManagedModulesForAllRequests="true">
 //	..
 //      <add name="SPWHRModule" type="SP.SiteName.HttpModules.AddWHR, SP.SiteName, Version=1.0.0.0, Culture=neutral, PublicKeyToken=112ea9c270aaa72a" />
 //    </modules>
-
 
 using System;
 using System.Collections.Generic;
