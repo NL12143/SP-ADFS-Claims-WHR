@@ -76,20 +76,22 @@ namespace SP.Extranet.HttpModules
                     }
                 }
             }
-            catch (Exception ex)
-            //Add you own exception handing. 
-	    {
-		//Sapmle code from the references  
-		Debug.WriteLine(ex.Message);
-		//A customer's custom exception logger  
-		ExceptionHandling.PublishToSPLog(123, ex.Message, "", "context_BeginRequest", ex);
-	    }
+		    catch (Exception ex)
+		    //Add you own exception handing. 
+		    {
+			//Sapmle code from the references  
+			Debug.WriteLine(ex.Message);
+			//A customer's custom exception logger  
+			ExceptionHandling.PublishToSPLog(123, ex.Message, "", "context_BeginRequest", ex);
+		    }
 
 	    }
+	    
         }
     }
 }
 
+Reference: 
 //Steve Peschka 
 //Using the WHR Parameter with SP2010 and SAML Auth
 //https://samlman.wordpress.com/2015/03/01/using-the-whr-parameter-with-sharepoint-2010-and-saml-auth/
