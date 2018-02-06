@@ -8,6 +8,65 @@ A "show list of partners" is considered unsecure and not user friendly.
 
 For now it adds a static WHR value. Will add  code that takes the users UPN (email) and insert the corresponding, dynamic, WHR. 
 
+SiteURL = site.portima.contoso.com 
+STS = ADFS Signing
+ADFS =  adfs.contoso.com
+PartnerIP = PI2/IP
+
+
+SharePoint, anonymous, adds &whr and redirect to ADFS 
+https://site.portima.contoso.com/
+
+https://site.portima.contoso.com/_layouts/15/Authenticate.aspx?Source=%2F
+
+https://site.portima.contoso.com/_login/default.aspx?ReturnUrl=%2f_layouts%2f15%2fAuthenticate.aspx%3fSource%3d%252F&Source=%2F
+
+
+https://site.portima.contoso.com/_trust/default.aspx?trust=ADFS%20Signing&ReturnUrl=%2f_layouts%2f15%2fAuthenticate.aspx%3fSource%3d%252F&Source=%2F
+
+
+https://site.portima.contoso.com/_trust/default.aspx?trust=ADFS+Signing&ReturnUrl=%2f_layouts%2f15%2fAuthenticate.aspx%3fSource%3d%252F&Source=%2f&whr=PI2/IP
+
+SharePoint redirects to ADFS
+https://adfs.contoso.com/adfs/ls/ 
+?wa=wsignin1.0
+&wtrealm=urn%3asite.contoso.com
+&wctx=https%3a%2f%2fsite.portima.contoso.com%2f_layouts%2f15%2fAuthenticate.aspx%3fSource%3d%252F
+&wreply=https%3a%2f%2fsite.portima.contoso.com%2f_trust%2fdefault.aspx
+&whr=PI2%2fIP
+
+ADFS redirects to IP, using whr to indicate partner 
+https://saml-ip.partner.be/Pi2/Ip/css/TAuth-TGS_TicketGetSaml.aspx?SAMLRequest=7b0.....H47%2bHw%3d%3d&RelayState=89e1289e-8fbc-4256-9695-1bb7559b09a7
+
+Use Fiddler, Textwizard to decode SAML 
+<samlp:AuthnRequest ID="id-9bc8ea05-8ff5-4746-8646-30b14bfa88fe" Version="2.0" IssueInstant="2018-02-06T11:37:27.739Z" 
+ Destination="https://saml-ip.partner.be/Pi2/Ip/css/TAuth-TGS_TicketGetSaml.aspx" 
+ Consent="urn:oasis:names:tc:SAML:2.0:consent:unspecified" 
+ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"> 
+ <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">http://adfs.contoso.com/adfs/services/trust</Issuer>
+ <samlp:NameIDPolicy Format="urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified" AllowCreate="true" />
+</samlp:AuthnRequest>
+
+IP redirects back to ADFS
+https://adfsqual.asweb.portima.aginsurance.be/adfs/ls/
+
+
+ADFS redirect back to SharePoint, now with valid token 
+https://site.portima.contoso.com/_trust/default.aspx?
+
+https://site.portima.contoso.com/_layouts/15/Authenticate.aspx?Source=%2F
+
+
+
+SharePoint, authenticated, redirects to default homepage 
+https://site.portima.contoso.com/
+
+https://site.portima.contoso.com/Pages/default.aspx
+
+
+
+
+
 ## References 
 
 Steve Peschka 
